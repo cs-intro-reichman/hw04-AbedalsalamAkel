@@ -14,15 +14,19 @@ public class ArrayOps {
         
     
 
-   public static int secondMaxValue(int[] array) {
+  public static int secondMaxValue(int[] array) {
     int max = Integer.MIN_VALUE, secondMax = Integer.MIN_VALUE;
     for (int value : array) {
         if (value > max) {
-            secondMax = max;
-            max = value;
+            secondMax = max; 
+            max = value; 
         } else if (value > secondMax && value != max) {
             secondMax = value;
         }
+    }
+    
+    if (secondMax == Integer.MIN_VALUE) {
+        secondMax = max;
     }
     return secondMax;
 }
@@ -38,15 +42,22 @@ public class ArrayOps {
         boolean found = false;
         for (int j = 0; j < array2.length; j++) {
             if (array1[i] == array2[j] && !matched[j]) {
-                matched[j] = true; // Mark as matched
+                matched[j] = true;
                 found = true;
                 break;
             }
         }
         if (!found) return false;
     }
+
+    
+    for (boolean m : matched) {
+        if (!m) return false;
+    }
+
     return true;
 }
+
 
        
    public static boolean isSorted(int[] array) {
