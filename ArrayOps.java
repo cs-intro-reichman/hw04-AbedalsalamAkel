@@ -1,6 +1,5 @@
 public class ArrayOps {
     public static void main(String[] args) {
-        System.out.println(isSorted(new int[] {7, 5, 4, 3, -12}));
     }
     
     public static int findMissingInt (int [] array) {
