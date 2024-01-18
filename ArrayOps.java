@@ -1,7 +1,9 @@
 public class ArrayOps {
     public static void main(String[] args) {
  
-       
+        int[] testCase1 = {2,8,3,7,8};
+ 
+        System.out.println(secondMaxValue(testCase1));
     }
    
     public static int findMissingInt (int[] array) {
@@ -89,5 +91,3 @@ public class ArrayOps {
        
     }
 }
-
-
