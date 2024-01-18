@@ -1,81 +1,93 @@
 public class ArrayOps {
     public static void main(String[] args) {
+ 
+        int[] testCase1 = {2,8,3,7,8};
+ 
+        System.out.println(secondMaxValue(testCase1));
     }
-    
-    public static int findMissingInt(int[] array) {
-    int n = array.length + 1;
-    int totalSum = n * (n - 1) / 2;
-    for (int num : array) {
-        totalSum -= num;
-    }
-    return totalSum;
-}
-
-        
-    
-
-  public static int secondMaxValue(int[] array) {
-    int max = Integer.MIN_VALUE, secondMax = Integer.MIN_VALUE;
-    for (int value : array) {
-        if (value > max) {
-            secondMax = max; 
-            max = value; 
-        } else if (value > secondMax && value != max) {
-            secondMax = value;
-        }
-    }
-    
-    if (secondMax == Integer.MIN_VALUE) {
-        secondMax = max;
-    }
-    return secondMax;
-}
-
-        
-    
-
-  public static boolean containsTheSameElements(int[] array1, int[] array2) {
-    if (array1.length != array2.length) return false;
-
-    boolean[] matched = new boolean[array2.length];
-    for (int i = 0; i < array1.length; i++) {
-        boolean found = false;
-        for (int j = 0; j < array2.length; j++) {
-            if (array1[i] == array2[j] && !matched[j]) {
-                matched[j] = true;
-                found = true;
-                break;
+   
+    public static int findMissingInt (int[] array) {
+        // Write your code here:
+        int n = array.length;
+ 
+            // for loops have a condition / as long as the condition is true - the for loop runs
+        for (int i = 0; i <= n; i++) {
+            boolean number = false;
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] == i) {
+                    number = true;
+                }
+            }
+            if (number == false) {
+               return i;
             }
         }
-        if (!found) return false;
+        return 1;
     }
-
-    
-    for (boolean m : matched) {
-        if (!m) return false;
+ 
+    public static int secondMaxValue(int [] array) {
+        int l = array.length;
+        int large = 0;
+        int secondLarger = 0;
+ 
+        for (int i = 0; i < l; ++i) {
+            if (array[i] > secondLarger) {
+                secondLarger = large;
+                large = array[i];
+            }
+        }
+        return secondLarger;
     }
+ 
 
-    return true;
-}
-
-
+    public static boolean containsTheSameElements(int [] array1,int [] array2) {
+        int n = array1.length;
+        int m = array2.length;
+ 
+        for (int i = 1; i < n; i++ ) { // first array check
+           for (int j = 0; j < m; j++) { // second array check
+            if (array1[i] == array2[j]) {
+                break;
+            }
+            else if (j == (m - 1)) {
+                return false;
+            }
+           }
+        }
+      
+        for (int j = 1; j < m; j++ ) { // first array check
+            for (int i = 0; i < n; i++) { // second array check
+             if (array2[j] == array1[i]) {
+                 break;
+             }
+             else if (i == (n - 1)) {
+                 return false;
+             }
+            }
+         }
+        return true;
+    }
+           
        
-   public static boolean isSorted(int[] array) {
-    boolean isAscending = true, isDescending = true;
-    for (int i = 0; i < array.length - 1; i++) {
-        if (array[i] > array[i + 1]) {
-            isAscending = false;
+ 
+    public static boolean isSorted(int [] array) {
+        // Write your code here:
+        if (array.length <= 1) {
+            return true;
         }
-        if (array[i] < array[i + 1]) {
-            isDescending = false;
-        }
+ 
+        boolean minOrMax = array[0] < array[1];
+       
+        for (int i = 1; i < array.length; i++) {
+            if (minOrMax) {
+                if (array[i - 1] > array[i]) {
+                    return false;
+                }
+            } else if (array[i - 1] < array[i]) {
+                    return false;
+                }
+            }
+            return true;
+       
     }
-    return isAscending || isDescending;
 }
-
-
-    }
-        
-    
-
-
