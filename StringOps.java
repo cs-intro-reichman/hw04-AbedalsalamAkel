@@ -1,18 +1,21 @@
 public static void main(String[] args) {
-      
+       
     }
+ 
     private static char lowerCaseXter(char c) {
         if (c >= 'A' && c <= 'Z') {
             return (char)(c + 32);
         }
         return c;
     }
+ 
     private static char upperCaseXter(char c) {
         if (c >= 'a' && c <= 'z') {
             return (char)(c - 32);
         }
         return c;
     }
+ 
     private static boolean characterIsVowel(char c) {
         switch (c) {
             case 'a':
@@ -30,8 +33,10 @@ public static void main(String[] args) {
                 return false;
         }
     }
+ 
     public static String capVowelsLowRest (String string) {
         String result = "";
+ 
         for (int i = 0; i < string.length(); ++i) {
             if (characterIsVowel(string.charAt(i))) {
                 result += upperCaseXter(string.charAt(i));
@@ -41,14 +46,16 @@ public static void main(String[] args) {
         }
         return result;
     }
- 
+
     public static String camelCase (String string) {
         String result = "";
+ 
         for (int i = 0; i < string.length(); ++i) {
             // trim spaces
             while (string.charAt(i) == ' ') {
                 ++i;
             }
+ 
             // we found first character already, make first character
             // of new word uppercase
             if (result != "" && string.charAt(i - 1) == ' ') {
@@ -59,22 +66,22 @@ public static void main(String[] args) {
         }
         return result;
     }
- 
+
     public static int[] allIndexOf (String string, char chr) {
         int indexOfCharacter = -1;
         int indexesFound = 0;
-      
+       
         // count number of characters that we have in the string
         do {
             indexOfCharacter = string.indexOf(chr, indexOfCharacter + 1);
             if (indexOfCharacter != -1) {
-               indexesFound++;
+                indexesFound++;
             }
         } while (indexOfCharacter != -1); // didn't find character
         // result is amount of indexes found :shrug:
         int[] result = new int[indexesFound];
         int indexIndex = 0;
- 
+
         // set the indices in the result array
         do {
             indexOfCharacter = string.indexOf(chr, indexOfCharacter + 1);
@@ -82,7 +89,7 @@ public static void main(String[] args) {
                 result[indexIndex++] = indexOfCharacter;
             }
         } while (indexOfCharacter != -1); // didn't find character
- 
+
         return result;
         }
     }
